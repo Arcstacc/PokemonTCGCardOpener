@@ -1,4 +1,4 @@
-Pokemon.java
+CreatePokemon.java object
 DEFAULT CONSTRUCTOR BECAUSE THE OBJECT CREATES ITSELF RANDOMLY
 
 Text file of all pokemon possible.
@@ -14,58 +14,61 @@ Constructor:
 Getter method:
 Returns a string of all
 
-Pokemon mechanics IV’s (Individual values)
+Random name method:
+-Goes through a list of the pokemon names and choses one random name according to random number b/t 1-1025. No parameter, returns string.
+
+Pokemon mechanics IV’s method (Individual values), no parameters, returns string of characteristics
 HP, Attack, Defense, Special Attack, Special Defense and Speed. Each range from 0-31
 Use math.random to generate random values between 0-31.
 
 Characteristics (Based on Highest IV) (Displays message on characteristics)
 Utilizes many conditions to determine highest IV and then choosing a random message between 1-5.
 HP
-Loves to eat
-Takes plenty of siestas
-Nods off a lot
-Scatters things often
-Likes to relax
+-Loves to eat
+-Takes plenty of siestas
+-Nods off a lot
+-Scatters things often
+-Likes to relax
 Attack
-Proud of its power
-Likes to thrash about
-A little quick tempered
-Likes to fight
-Quick tempered
+-Proud of its power
+-Likes to thrash about
+-A little quick tempered
+-Likes to fight
+-Quick tempered
 Defense
-Sturdy body
-Capable of taking hits
-Highly persistent
-Good endurance
-Good perseverance
+-Sturdy body
+-Capable of taking hits
+-Highly persistent
+-Good endurance
+-Good perseverance
 Special Attack
-Highly curious
-Mischievous
-Thoroughly cunning
-Often lost in thought
-Very finicky
+-Highly curious
+-Mischievous
+-Thoroughly cunning
+-Often lost in thought
+-Very finicky
 Special Defense
-Strong willed
-Somewhat vain
-Strongly defiant
-Hates to lose
-Somewhat stubborn
+-Strong willed
+-Somewhat vain
+-Strongly defiant
+-Hates to lose
+-Somewhat stubborn
 Speed
-Likes to run
-Alert to sounds
-Impetuous and silly
-Somewhat of a clown
-Quick to flee
+-Likes to run
+-Alert to sounds
+-Impetuous and silly
+-Somewhat of a clown
+-Quick to flee
 
 
 
-Personality Values (PVs)
+Personality Values (PVs), no parameters, returns string of PV’s
 Utilizes math.random to chose random personality values. Height ratios can range and increase the value of the card.
 Gender (1/2 man, 1/2 girl)
 Height ratio
 Weight ratio
 Growth rate
-Rarity Values (RVs)
+Rarity Values (RVs), no parameters, return list of RVs
 Utilizes math.random to chose a collection of rarity values, it is completely possible to get all rarirties in one card and make BANK.
 Normal (1/1) (1xValue)
 Shininess (1/3) (1.4xValue)
@@ -77,14 +80,51 @@ Das’s signature (1/50) (10xValue)
 Returns a string of rarity value
 If no rarity, return normal
 
-
-Find pokemon value
+Find pokemon value, no parameters, return double of value
 -Generates a random base value between 0.00$-1.00$
 -Finds multiplier for value based (IV’s, PV’s, RV’s)
-
-
-
-
-
 Pokedex object (Where you can admire all the pokemon you’ve collected so far)
-Market object (Where you can sell pokemon cards and earn COLD HARD fake CASH, also keep track of cash)t
+Constructor, no parameter: creates an empty list
+
+Adder method, pokemon object parameter,void return: Adds pokemon to a Storage of pokemon objects
+
+Remove method, pokemon object parameter, void return: removes pokemon from list due to market sell
+
+Getter method, no parameter, list return: Returns a neat list of all pokemon
+
+
+Bank object (Just keeps track of money)
+Constructor, no parameter,: inits bank with starting money (Will be decided in program)
+
+Adder method, sold pokemon parameter, void returns: add the value of a pokemon sold to the bank cost
+
+Withdraw method, double object, takes away money from the bank for cards
+
+Getter method, no parameter, returns double of money left: Gets bank informatrion
+
+
+
+Market object (Where you can sell pokemon cards and earn COLD HARD fake CASH.
+-Constructor, pokedex parameter, inits a marketplace with the value of pokemon in users pokedex
+
+-Sell method, pokemon index value parameter, returns money to be used by bank.java: Sells card
+
+
+Main.java
+-Introduce user to the game
+-Access to a menu of 1. Draw cards 2. Look at pokedex 3. Look at bank 4. Sell pokemon 5. Quit
+
+-While userinput == 1, use pokemon.java to draw a random pokemon card
+-add pokemon to pokedex
+-Withdraw money from bank
+-set user input to 2
+-Ask user to draw again (1) or quit (2)
+-For loop going through the list of pokemon with it’s attributes, values, and cost
+-Go back to menu
+-Getter method for bank, informing the user of the amount of money they are allowed
+While input is 4
+-Uses pokedex to demonstrate all pokemon, indexed from 1 and onward
+-Gets user input to (1) sell pokemon using sell method (2) quit
+-Set user input to 5
+-Whole program is a while loop of, while != 5, run program
+
