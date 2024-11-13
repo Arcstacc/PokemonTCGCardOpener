@@ -1,10 +1,13 @@
 CreatePokemon.java object
 DEFAULT CONSTRUCTOR BECAUSE THE OBJECT CREATES ITSELF RANDOMLY
 
-Text file of all pokemon possible.
+Get file data method: (Parameter is file name)
+To access the pokemon names
 1025 pokemon Pokemon names
+https://docs.google.com/spreadsheets/d/1eM6FzSPY_4okSNhsQDSIl0QFg3QHLVEsqm-khs4Vhnk/edit?gid=0#gid=0
 
 Constructor:
+-Random gender (b/t 0-1)
 -Random name for pokemon (With method)
 -Pokemon IV’s (With method)
 -Pokemon PV’s (With method)
@@ -17,11 +20,11 @@ Returns a string of all
 Random name method:
 -Goes through a list of the pokemon names and choses one random name according to random number b/t 1-1025. No parameter, returns string.
 
-Pokemon mechanics IV’s method (Individual values), no parameters, returns string of characteristics
+Pokemon mechanics IV’s method (Individual values), no parameters, returns list of IV's
 HP, Attack, Defense, Special Attack, Special Defense and Speed. Each range from 0-31
 Use math.random to generate random values between 0-31.
 
-Characteristics (Based on Highest IV) (Displays message on characteristics)
+Characteristics method (Based on Highest IV) (Displays message on characteristics)
 Utilizes many conditions to determine highest IV and then choosing a random message between 1-5.
 HP
 -Loves to eat
@@ -60,11 +63,13 @@ Speed
 -Somewhat of a clown
 -Quick to flee
 
+Math for indexing charactteristics
+0,1,2,3,4,5
+0-4, 5-9, 10-14, 15-19, 20-24, 25-29
 
 
 Personality Values (PVs), no parameters, returns string of PV’s
 Utilizes math.random to chose random personality values. Height ratios can range and increase the value of the card.
-Gender (1/2 man, 1/2 girl)
 Height ratio
 Weight ratio
 Growth rate
