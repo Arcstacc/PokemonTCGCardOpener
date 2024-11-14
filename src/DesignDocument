@@ -66,6 +66,7 @@ Speed
 Math for indexing charactteristics
 0,1,2,3,4,5
 0-4, 5-9, 10-14, 15-19, 20-24, 25-29
+index * 5 + random bt 0-4
 
 
 Personality Values (PVs), no parameters, returns string of PV’s
@@ -73,6 +74,7 @@ Utilizes math.random to chose random personality values. Height ratios can range
 Height ratio
 Weight ratio
 Growth rate
+
 Rarity Values (RVs), no parameters, return list of RVs
 Utilizes math.random to chose a collection of rarity values, it is completely possible to get all rarirties in one card and make BANK.
 Normal (1/1) (1xValue)
