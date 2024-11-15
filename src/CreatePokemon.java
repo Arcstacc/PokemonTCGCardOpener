@@ -3,6 +3,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 public class CreatePokemon {
     DecimalFormat dc1 = new DecimalFormat("#.00");
@@ -12,6 +13,7 @@ public class CreatePokemon {
     ArrayList<Double> personalityValues;
     ArrayList<String> rarityValues;
     String characteristic;
+    double cost;
     public CreatePokemon() {
         if ((int) (Math.random() * 2) == 0) {
             gender = "Male";
@@ -31,7 +33,10 @@ public class CreatePokemon {
 
         return name + " \n" +
                 gender + " \n" +
-                individualValues + " " + characteristic + " " + personalityValues;
+                individualValues + " \n" +
+                characteristic + " \n" +
+                personalityValues + " \n" +
+                rarityValues;
     }
 
     public String randomName() {
@@ -76,34 +81,28 @@ public class CreatePokemon {
     }
 
     public ArrayList<String> randomRarities() {
-        ArrayList<String> rarities = new ArrayList<String>();
-        ArrayList<String> raritiesPossible = getFileData("src/Rarities");
-        ArrayList<String> chancesMultiplier = getFileData("src/RaritiesProbability")        ArrayList<String> multiplier;
-        Integer[] chances = new Integer[]{1, 3, 5, 10, 20, 30, 50};
 
+        ArrayList<String> rarities = new ArrayList<String>(); // Stores rarties
 
-         for (int i = 0; i <= chancesMultiplier.size(); i++) {
-            int chance = Integer.parseInt(chancesMultiplier.get(i).substring(0, chancesMultiplier.get(i).indexOf(",")));
+        // For calculations
+        String[] raritiesPossible = new String[]{"Shiny", "Full art", "Reverse holo", "Ghost foil", "Limited edition", "Das’s signature"};
+        String[] chances = new String[]{"1/3", "1/5", "1/10", "1/20", "1/30", "1/50"};
+        Double[] costMultiplers = new Double[]{1.0, 1.5, 1.8, 2.6, 4.0, 6.5, 10.0};
+        double costMultipliers = 1;
+
+         for (int i = 0; i < raritiesPossible.length; i++) {
+             String chance = chances[i];
+             int numerator = Integer.parseInt(chance.substring(0, chance.indexOf("/")));
+             int denominator = Integer.parseInt(chance.substring(chance.indexOf("/") + 1));
+             int randomNum = (int) (Math.random() * denominator) + 1;
+             if (randomNum <= numerator) {
+                 rarities.add(raritiesPossible[i]);
+             }
         }
-        return personalityRatios;
-    }
-
-
-        // Normal (1/1) (1xValue)
-        //Shininess (1/3) (1.4xValue)
-        //Full art  (1/5) (1.8xValue)
-        //Reverse holo (1/10) (2.6xValue)
-        //Ghost foil (1/20) (4.0xValue)
-        //Limited edition (1/30) (6.5xValue)
-        //Das’s signature (1/50) (10xValue)
-        //Returns a string of rarity value
-        //If no rarity, return normal
-
-        for (int i = 0; i < 3; i++) {
-            // b/t 0.5 and 2.0
-            personalityRatios.add(Double.valueOf(dc1.format(((Math.random() * 15) + 5) / 10)));
-        }
-        return personalityRatios;
+         if (rarities.isEmpty()) {
+             rarities.add("Normal");
+         }
+         return rarities;
     }
 
 

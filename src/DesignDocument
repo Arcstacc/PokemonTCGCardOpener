@@ -78,7 +78,7 @@ Growth rate
 Rarity Values (RVs), no parameters, return list of RVs
 Utilizes math.random to chose a collection of rarity values, it is completely possible to get all rarirties in one card and make BANK.
 Normal (1/1) (1xValue)
-Shininess (1/3) (1.4xValue)
+Shininess (1/3) (1.5xValue)
 Full art  (1/5) (1.8xValue)
 Reverse holo (1/10) (2.6xValue)
 Ghost foil (1/20) (4.0xValue)
@@ -119,7 +119,7 @@ Market object (Where you can sell pokemon cards and earn COLD HARD fake CASH.
 
 Main.java
 -Introduce user to the game
--Access to a menu of 1. Draw cards 2. Look at pokedex 3. Look at bank 4. Sell pokemon 5. Quit
+-Access to a menu of 1. Draw cards 2. Look at pokedex 3. Look at bank 4. Sell pokemon 5. Leave
 
 -While userinput == 1, use pokemon.java to draw a random pokemon card
 -add pokemon to pokedex
