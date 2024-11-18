@@ -90,22 +90,26 @@ If no rarity, return normal
 Find pokemon value, no parameters, return double of value
 -Generates a random base value between 0.00$-1.00$
 -Finds multiplier for value based (IV’s, PV’s, RV’s)
+
 Pokedex object (Where you can admire all the pokemon you’ve collected so far)
-Constructor, no parameter: creates an empty list
+No Constructor
+
+Sets an empty list as global variable
 
 Adder method, pokemon object parameter,void return: Adds pokemon to a Storage of pokemon objects
 
-Remove method, pokemon object parameter, void return: removes pokemon from list due to market sell
+Remove method, index chosen parameter, void return: removes pokemon from list due to market sell
 
 Getter method, no parameter, list return: Returns a neat list of all pokemon
 
 
 Bank object (Just keeps track of money)
-Constructor, no parameter,: inits bank with starting money (Will be decided in program)
+Variables, Money, DecimalFormat
+Constructor, Parameter for starting cash,: inits bank with starting money (Will be decided in program)
 
-Adder method, sold pokemon parameter, void returns: add the value of a pokemon sold to the bank cost
+Adder method, sold pokemon cost parameter, void returns: add the value of a pokemon sold to the bank cost
 
-Withdraw method, double object, takes away money from the bank for cards
+Withdraw method, double parameter for card cost, takes away money from the bank for cards
 
 Getter method, no parameter, returns double of money left: Gets bank informatrion
 

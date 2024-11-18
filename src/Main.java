@@ -7,7 +7,9 @@ class Main {
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
         int userChoice = 0;
-        ArrayList<CreatePokemon> listOfPokemon = new ArrayList<>();
+
+        Pokedex listOfPokemon = new Pokedex();
+        Bank pokébank = new Bank(100);
 
         System.out.println("Hello, welcome to the PokéPoké Stop!");
         System.out.println("You can only draw card rn");
@@ -18,6 +20,7 @@ class Main {
                 "Characteristic\n" +
                 "[Width,Height,Growth]\n" +
                 "[Rarity]\n");
+        System.out.println("You start off with $100!");
 
         while (userChoice != 5) {
             if (userChoice == 0) {
@@ -32,19 +35,22 @@ class Main {
                 CreatePokemon pokemondraw = new CreatePokemon();
                 System.out.println(pokemondraw.getInfo());
                 System.out.println();
-                listOfPokemon.add(pokemondraw);
+                listOfPokemon.addPokemon(pokemondraw);
+
+                pokébank.withdraw(5);
+
                 userChoice = 0;
             }
             else if (userChoice == 2) {
-                System.out.println(2);
+                System.out.println(listOfPokemon.getPokemon());
                 userChoice = 0;
             }
             else if (userChoice == 3) {
-                System.out.println(3);
+                System.out.println(pokébank.getBank());
                 userChoice = 0;
             }
             else if (userChoice == 4) {
-                System.out.println(4);
+                pokébank.deposit(4);
                 userChoice = 0;
             }
             else if (userChoice == 5) {
