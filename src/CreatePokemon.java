@@ -29,14 +29,31 @@ public class CreatePokemon {
     }
 
     public String getInfo() {
+        String niceIV = "";
+        String[] ivStats = new String[]{"HP:", "ATT:", "DEF:", "SATT:", "SDEF:", "SPD:"};
 
+        for (int i = 0; i < individualValues.size(); i++) {
+            niceIV += ivStats[i] + individualValues.get(i) + " ";
+        }
 
-        return name + " \n" +
-                gender + " \n" +
-                individualValues + " \n" +
-                characteristic + " \n" +
-                personalityValues + " \n" +
-                rarityValues;
+        String nicePV = "";
+        String[] pvStats = new String[]{"Width:", "Height:", "Growth:"};
+        for (int i = 0; i < personalityValues.size(); i++) {
+            nicePV += pvStats[i] + personalityValues.get(i) + " ";
+        }
+
+        String niceRV = "Rarities: ";
+        String rarityString = rarityValues.toString();
+        niceRV += rarityString.substring(1, rarityString.length() - 1);
+
+        String info = "";
+        info += name + " (" + gender + ")" + " \n";
+        info += niceIV + " \n";
+        info += characteristic + " \n";
+        info += nicePV + " \n";
+        info += niceRV;
+
+        return info;
     }
 
     public String randomName() {
@@ -87,8 +104,6 @@ public class CreatePokemon {
         // For calculations
         String[] raritiesPossible = new String[]{"Shiny", "Full art", "Reverse holo", "Ghost foil", "Limited edition", "Das’s signature"};
         String[] chances = new String[]{"1/3", "1/5", "1/10", "1/20", "1/30", "1/50"};
-        Double[] costMultiplers = new Double[]{1.0, 1.5, 1.8, 2.6, 4.0, 6.5, 10.0};
-        double costMultipliers = 1;
 
          for (int i = 0; i < raritiesPossible.length; i++) {
              String chance = chances[i];
@@ -105,6 +120,39 @@ public class CreatePokemon {
          return rarities;
     }
 
+    public double cardPrice() {
+        double basePrice = Double.parseDouble(dc1.format(Math.random() / 2)) + 0.01; // random base value 0.01-1.00
+        System.out.println(basePrice);
+
+        double costMultiplier = 1;
+        int totalIVStats = 0;
+        for (int i = 0; i < individualValues.size(); i++) {
+            totalIVStats += individualValues.get(i);
+        }
+        // Multiply cost with IV
+
+        costMultiplier *= (1 + ((double) totalIVStats / 100));
+        System.out.println(costMultiplier);
+
+        // Multiply cost with PV
+        for (int i = 0; i < personalityValues.size(); i++) {
+            costMultiplier *= personalityValues.get(i);
+        }
+        System.out.println(costMultiplier);
+
+        // Multiply cost with RV
+        String[] raritiesPossible = new String[]{"Normal", "Shiny", "Full art", "Reverse holo", "Ghost foil", "Limited edition", "Das’s signature"};
+        Double[] costMultiplers = new Double[]{1.0, 2.0, 3.0, 5.0, 7.0, 8.0, 10.0};
+        for (int i = 0; i < rarityValues.size(); i++) {
+            int indexRarity = Arrays.stream(raritiesPossible).toList().indexOf(rarityValues.get(i));
+            costMultiplier *= costMultiplers[indexRarity];
+        }
+        System.out.println(costMultiplier);
+        basePrice *= costMultiplier;
+        System.out.println(basePrice);
+        return basePrice;
+
+    }
 
     public static ArrayList<String> getFileData(String fileName) {
         ArrayList<String> fileData = new ArrayList<String>();
@@ -122,4 +170,6 @@ public class CreatePokemon {
             return fileData;
         }
     }
+
+
 }

@@ -5,6 +5,10 @@ import java.util.Scanner;
 
 class Main {
     public static void main(String[] args) {
+        CreatePokemon pokemon1 = new CreatePokemon();
+        System.out.println(pokemon1.getInfo());
+        pokemon1.cardPrice();
+
         Scanner s = new Scanner(System.in);
         int userChoice = 0;
 
@@ -14,13 +18,13 @@ class Main {
         System.out.println("Hello, welcome to the PokéPoké Stop!");
         System.out.println("You can only draw card rn");
         System.out.println("Format is as follows:\n" +
-                "Name\n" +
-                "Gender\n" +
-                "Stats: [Hp, Att, Def, SAtt, SDef, Speed]\n" +
+                "Name " + "(Gender)\n" +
+                "Stats: [Hp, Attack, Defense, Special Attack, Special Defense, Speed]\n" +
                 "Characteristic\n" +
                 "[Width,Height,Growth]\n" +
                 "[Rarity]\n");
         System.out.println("You start off with $100!");
+        System.out.println("Each card costs 3$!");
 
         while (userChoice != 5) {
             if (userChoice == 0) {
@@ -37,7 +41,7 @@ class Main {
                 System.out.println();
                 listOfPokemon.addPokemon(pokemondraw);
 
-                pokébank.withdraw(5);
+                pokébank.withdraw(3);
 
                 userChoice = 0;
             }
@@ -50,7 +54,7 @@ class Main {
                 userChoice = 0;
             }
             else if (userChoice == 4) {
-                pokébank.deposit(4);
+                pokébank.deposit(0);
                 userChoice = 0;
             }
             else if (userChoice == 5) {
