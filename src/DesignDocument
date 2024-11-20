@@ -78,12 +78,12 @@ Growth rate
 Rarity Values (RVs), no parameters, return list of RVs
 Utilizes math.random to chose a collection of rarity values, it is completely possible to get all rarirties in one card and make BANK.
 Normal (1/1) (1xValue)
-Shininess (1/3) (2xValue)
-Full art  (1/5) (3xValue)
-Reverse holo (1/10) (5xValue)
-Ghost foil (1/20) (7xValue)
-Limited edition (1/30) (8xValue)
-Das’s signature (1/50) (10xValue)
+Shininess (1/3) (3xValue)
+Full art  (1/5) (6xValue)
+Reverse holo (1/10) (7xValue)
+Ghost foil (1/20) (9xValue)
+Limited edition (1/30) (12xValue)
+Das’s signature (1/50) (20xValue)
 Returns a string of rarity value
 If no rarity, return normal
 
