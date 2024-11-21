@@ -19,7 +19,7 @@ class Main {
         int userChoice = 0;
 
         Pokedex listOfPokemon = new Pokedex();
-        Bank pokébank = new Bank(100);
+        Bank pokébank = new Bank(1000);
 
         System.out.println("Hello, welcome to the PokéPoké Stop!");
         System.out.println("Market is offline temporally");
@@ -38,7 +38,7 @@ class Main {
                 System.out.println("1. Draw card \n" +
                         "2. Look at pokédex \n" +
                         "3. Look at bank \n" +
-                        "4. Sell pokémon \n" +
+                        "4. Sell pokémon (Unavailable) \n" +
                         "5. Leave");
                 userChoice = s.nextInt();
             }
