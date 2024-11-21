@@ -53,8 +53,8 @@ public class CreatePokemon {
         info += niceIV + " \n";
         info += characteristic + " \n";
         info += nicePV + " \n";
-        info += niceRV;
-        info += cost;
+        info += niceRV + " \n";
+        info += "Value: $" + cost;
 
         return info;
     }
@@ -153,8 +153,8 @@ public class CreatePokemon {
             int indexRarity = Arrays.stream(raritiesPossible).toList().indexOf(rarityValues.get(i));
             costMultiplier *= costMultiplers[indexRarity];
         }
-        System.out.println("Base: " + basePrice);
-        System.out.println("Multipler: " + costMultiplier);
+//        System.out.println("Base: " + basePrice);
+//        System.out.println("Multipler: " + costMultiplier);
         return (basePrice * costMultiplier);
 
     }
