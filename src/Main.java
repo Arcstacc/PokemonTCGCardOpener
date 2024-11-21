@@ -57,6 +57,10 @@ class Main {
                 userChoice = 0;
             }
             else if (userChoice == 3) {
+                System.out.println(pokébank.getBank());
+                userChoice = 0;
+            }
+            else if (userChoice == 4) {
 //                int pokemonIndex;
 //
 //                System.out.println(listOfPokemon.getPokemon());
@@ -70,9 +74,6 @@ class Main {
 //                System.out.println(pokemonIndex);
 //
 //                System.out.println(pokébank.getBank());
-                userChoice = 0;
-            }
-            else if (userChoice == 4) {
 
                 pokébank.deposit(0);
                 userChoice = 0;
