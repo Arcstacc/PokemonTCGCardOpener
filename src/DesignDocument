@@ -115,27 +115,33 @@ Getter method, no parameter, returns double of money left: Gets bank informatrio
 
 
 
-Market object (Where you can sell pokemon cards and earn COLD HARD fake CASH.
--Constructor, pokedex parameter, inits a marketplace with the value of pokemon in users pokedex
-
--Sell method, pokemon index value parameter, returns money to be used by bank.java: Sells card
-
 
 Main.java
 -Introduce user to the game
--Access to a menu of 1. Draw cards 2. Look at pokedex 3. Look at bank 4. Sell pokemon 5. Leave
+-Access to a menu of 1. Draw cards 2. Change draw amount 3. Look at pokedex 4. Look at bank 5. Sell pokemon 6. Leave
 
--While userinput == 1, use pokemon.java to draw a random pokemon card
+While userinput == 1, use pokemon.java to draw a random pokemon card
 -add pokemon to pokedex
 -Withdraw money from bank
--set user input to 2
--Ask user to draw again (1) or quit (2)
+-Go back to menu
+
+USer input = 2
+Get a user input to change number of rolls per draw.
+
+User input = 3
 -For loop going through the list of pokemon with it’s attributes, values, and cost
 -Go back to menu
+
+User input = 4
 -Getter method for bank, informing the user of the amount of money they are allowed
-While input is 4
--Uses pokedex to demonstrate all pokemon, indexed from 1 and onward
--Gets user input to (1) sell pokemon using sell method (2) quit
--Set user input to 5
--Whole program is a while loop of, while != 5, run program
+
+User Input = 5
+-Just sell everything using pokedex and pokemon costs
+-Add money to bank
+
+Whole program is a while loop of, while != 5, run program
+
+
+
+
 

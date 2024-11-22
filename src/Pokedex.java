@@ -16,4 +16,7 @@ public class Pokedex {
         return formattedListOfPokemon;
     }
 
+    public ArrayList<CreatePokemon> getListOfPokemon() {
+        return listOfPokemon;
+    }
 }

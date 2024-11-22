@@ -12,8 +12,5 @@ public class Bank {
     public void withdraw(double cardCost) {
         money -= cardCost;
     }
-    public String getBank() {
-        return "You have $" + money + ", Keep winning!";
-    }
-
+    public double getBank() { return money; }
 }

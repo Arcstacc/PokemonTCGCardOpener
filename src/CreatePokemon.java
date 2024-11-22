@@ -27,7 +27,7 @@ public class CreatePokemon {
         characteristic = randomCharacteristics(individualValues);
         personalityValues = randomPersonalityValues();
         rarityValues = randomRarities();
-        cost = randomCardPrice();
+        cost = Double.parseDouble(dc1.format(randomCardPrice()));
     }
 
     public String getInfo() {
@@ -148,7 +148,7 @@ public class CreatePokemon {
 
         // Multiply cost with RV
         String[] raritiesPossible = new String[]{"Normal", "Shiny", "Full art", "Reverse holo", "Ghost foil", "Limited edition", "Das’s signature"};
-        Double[] costMultiplers = new Double[]{1.0, 3.0, 6.0, 7.0, 9.0, 12.0, 20.0};
+        Double[] costMultiplers = new Double[]{1.0, 3.0, 6.0, 7.0, 9.0, 12.0, 30.0};
         for (int i = 0; i < rarityValues.size(); i++) {
             int indexRarity = Arrays.stream(raritiesPossible).toList().indexOf(rarityValues.get(i));
             costMultiplier *= costMultiplers[indexRarity];

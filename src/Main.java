@@ -17,6 +17,8 @@ class Main {
 
         Scanner s = new Scanner(System.in);
         int userChoice = 0;
+        int rolls = 1;
+        final double CARD_COST = 10;
 
         Pokedex listOfPokemon = new Pokedex();
         Bank pokébank = new Bank(1000);
@@ -32,59 +34,67 @@ class Main {
                 "Cost\n");
         System.out.println("You start off with $1000!");
         System.out.println("Each card costs 10$!");
+        System.out.println("Draw 1 card for now. This can be changed with option 2.");
 
-        while (userChoice != 5) {
+        while (userChoice != 6) {
             if (userChoice == 0) {
                 System.out.println("1. Draw card \n" +
-                        "2. Look at pokédex \n" +
-                        "3. Look at bank \n" +
-                        "4. Sell pokémon (Unavailable) \n" +
-                        "5. Leave");
+                        "2. Change draws per roll \n" +
+                        "3. Look at pokédex \n" +
+                        "4. Look at bank \n" +
+                        "5. Sell pokémon (Unavailable) \n" +
+                        "6. Leave");
                 userChoice = s.nextInt();
             }
             else if (userChoice == 1) {
-                CreatePokemon pokemondraw = new CreatePokemon();
-                System.out.println(pokemondraw.getInfo());
-                System.out.println();
-                listOfPokemon.addPokemon(pokemondraw);
-
-                pokébank.withdraw(10);
-
+                if (pokébank.getBank() >= (rolls * CARD_COST)) {
+                    createBlank();
+                    for (int i = 0; i < rolls; i++) {
+                        CreatePokemon pokemondraw = new CreatePokemon();
+                        System.out.println(pokemondraw.getInfo());
+                        System.out.println();
+                        listOfPokemon.addPokemon(pokemondraw);
+                        pokébank.withdraw(CARD_COST);
+                    }
+                }
+                else {
+                    System.out.println("NO MORE MONEY SRY!");
+                }
                 userChoice = 0;
             }
             else if (userChoice == 2) {
-                System.out.println(listOfPokemon.getPokemon());
+                System.out.println("How many cards do you want to draw per roll?");
+                rolls = s.nextInt();
                 userChoice = 0;
             }
             else if (userChoice == 3) {
-                System.out.println(pokébank.getBank());
+                System.out.println(listOfPokemon.getPokemon());
                 userChoice = 0;
             }
             else if (userChoice == 4) {
-//                int pokemonIndex;
-//
-//                System.out.println(listOfPokemon.getPokemon());
-//                if (!listOfPokemon.getPokemon().isEmpty()) {
-//                    System.out.println("Chose from the list a pokemon to sell (Number)");
-//                    pokemonIndex = s.nextInt() - 1;
-//                }
-//                else {
-//                    pokemonIndex = -1;
-//                }
-//                System.out.println(pokemonIndex);
-//
-//                System.out.println(pokébank.getBank());
+                System.out.println("You have $" + pokébank.getBank() + ", Keep winning!");
+                userChoice = 0;
+            }
+            else if (userChoice == 5) {
+                int totalProfit = 0;
+//                for (int i = 0; i < listOfPokemon.getListOfPokemon().size(); i ++)
+//                    listOfPokemon.getListOfPokemon().get(i)
 
                 pokébank.deposit(0);
                 userChoice = 0;
             }
-            else if (userChoice == 5) {
+            else if (userChoice == 6) {
                 System.out.println("Goodbye");
             }
             else {
                 System.out.println("Try again");
                 userChoice = 0;
             }
+        }
+    }
+    public static void createBlank() {
+        for (int i = 0; i < 100; i++) {
+            System.out.println();
         }
     }
 }
