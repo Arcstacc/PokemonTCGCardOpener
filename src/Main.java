@@ -1,7 +1,10 @@
 import java.sql.SQLOutput;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
+import javax.sound.sampled.SourceDataLine;
 
 class Main {
     public static void main(String[] args) {
@@ -16,6 +19,7 @@ class Main {
 //        System.out.println(testCost);
 
         Scanner s = new Scanner(System.in);
+        DecimalFormat dc1 = new DecimalFormat("0.00");
         int userChoice = 0;
         int rolls = 1;
         final double CARD_COST = 10;
@@ -42,7 +46,7 @@ class Main {
                         "2. Change draws per roll \n" +
                         "3. Look at pokédex \n" +
                         "4. Look at bank \n" +
-                        "5. Sell pokémon (Unavailable) \n" +
+                        "5. Sell all pokémon \n" +
                         "6. Leave");
                 userChoice = s.nextInt();
             }
@@ -68,29 +72,31 @@ class Main {
                 userChoice = 0;
             }
             else if (userChoice == 3) {
+                createBlank();
                 System.out.println(listOfPokemon.getPokemon());
                 userChoice = 0;
             }
             else if (userChoice == 4) {
+                createBlank();
                 System.out.println("You have $" + pokébank.getBank() + ", Keep winning!");
                 userChoice = 0;
             }
             else if (userChoice == 5) {
-                int totalProfit = 0;
-//                for (int i = 0; i < listOfPokemon.getListOfPokemon().size(); i ++)
-//                    listOfPokemon.getListOfPokemon().get(i)
+                createBlank();
+                int count = listOfPokemon.listOfPokemon.size();
+                double totalCost = Double.parseDouble(dc1.format(listOfPokemon.sellPokemon(pokébank)));
+                System.out.println("You've sold " + count + " pokemon for $" + totalCost + ". Pleasure doing business.");
 
-                pokébank.deposit(0);
                 userChoice = 0;
-            }
-            else if (userChoice == 6) {
-                System.out.println("Goodbye");
             }
             else {
                 System.out.println("Try again");
                 userChoice = 0;
             }
         }
+        createBlank();
+        System.out.println("You earn $" + pokébank.getBank() + " Nice!");
+        System.out.println("Goodbye");
     }
     public static void createBlank() {
         for (int i = 0; i < 100; i++) {
