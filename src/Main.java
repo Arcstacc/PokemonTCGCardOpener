@@ -8,16 +8,7 @@ import javax.sound.sampled.SourceDataLine;
 
 class Main {
     public static void main(String[] args) {
-//        double testCost = 0.0;
-//        for (int i = 0; i < 10; i++) {
-//            CreatePokemon pokemon = new CreatePokemon();
-//            double tempCost = pokemon.getCost();
-//            testCost += tempCost;
-//            System.out.println(tempCost);
-//        }
-//        System.out.println();
-//        System.out.println(testCost);
-
+        // Inits all nessasary variables
         Scanner s = new Scanner(System.in);
         DecimalFormat dc1 = new DecimalFormat("0.00");
         int userChoice = 0;
@@ -27,8 +18,9 @@ class Main {
         Pokedex listOfPokemon = new Pokedex();
         Bank pokébank = new Bank(1000);
 
+        // Introduction
         System.out.println("Hello, welcome to the PokéPoké Stop!");
-        System.out.println("Market is offline temporally");
+        System.out.println("Here you can win big by opening pokémon cards");
         System.out.println("Format is as follows:\n" +
                 "Name " + "(Gender)\n" +
                 "Stats: [Hp, Attack, Defense, Special Attack, Special Defense, Speed]\n" +
@@ -50,6 +42,7 @@ class Main {
                         "6. Leave");
                 userChoice = s.nextInt();
             }
+            // draw cards with necessary logic like bank and pokedex
             else if (userChoice == 1) {
                 if (pokébank.getBank() >= (rolls * CARD_COST)) {
                     createBlank();
@@ -61,43 +54,56 @@ class Main {
                         pokébank.withdraw(CARD_COST);
                     }
                 }
+                // checks bank
                 else {
                     System.out.println("NO MORE MONEY SRY!");
                 }
                 userChoice = 0;
             }
+            // gets user to change cards per roll to make things easier
             else if (userChoice == 2) {
                 System.out.println("How many cards do you want to draw per roll?");
                 rolls = s.nextInt();
                 userChoice = 0;
             }
+            // prints out pokedex
             else if (userChoice == 3) {
                 createBlank();
                 System.out.println(listOfPokemon.getPokemon());
                 userChoice = 0;
             }
+            // prints out banking info
             else if (userChoice == 4) {
                 createBlank();
                 System.out.println("You have $" + pokébank.getBank() + ", Keep winning!");
                 userChoice = 0;
             }
+            // prints out the return on investment
+            // and also uses necessary objects and methods to
+            // sell Pokémon correctly
             else if (userChoice == 5) {
                 createBlank();
-                int count = listOfPokemon.listOfPokemon.size();
+                int count = listOfPokemon.getListOfPokemon().size();
                 double totalCost = Double.parseDouble(dc1.format(listOfPokemon.sellPokemon(pokébank)));
                 System.out.println("You've sold " + count + " pokemon for $" + totalCost + ". Pleasure doing business.");
 
                 userChoice = 0;
             }
+            // In case the user enters 11 or smth
             else {
                 System.out.println("Try again");
                 userChoice = 0;
             }
         }
+        // End
         createBlank();
         System.out.println("You earn $" + pokébank.getBank() + " Nice!");
         System.out.println("Goodbye");
     }
+    /**
+     * The createBlank method simply creates 100 blank lines.
+     * This helps separate the previous code with outputs to improve readability.
+     */
     public static void createBlank() {
         for (int i = 0; i < 100; i++) {
             System.out.println();

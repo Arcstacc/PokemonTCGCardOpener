@@ -1,12 +1,11 @@
 CreatePokemon.java object
-DEFAULT CONSTRUCTOR BECAUSE THE OBJECT CREATES ITSELF RANDOMLY
 
 Get file data method: (Parameter is file name)
 To access the pokemon names
 1025 pokemon Pokemon names
 https://docs.google.com/spreadsheets/d/1eM6FzSPY_4okSNhsQDSIl0QFg3QHLVEsqm-khs4Vhnk/edit?gid=0#gid=0
 
-Constructor:
+Constructor (DEFAULT CONSTRUCTOR BECAUSE THE OBJECT CREATES ITSELF RANDOMLY):
 -Random gender (b/t 0-1)
 -Random name for pokemon (With method)
 -Pokemon IV’s (With method)
@@ -88,17 +87,16 @@ Returns a string of rarity value
 If no rarity, return normal
 
 Find pokemon value, no parameters, return double of value
--Generates a random base value between 0.00$-0.50$
+-Generates a random base value between 0.10$-0.25$
 -Finds multiplier for value based (IV’s, PV’s, RV’s)
 
 Pokedex object (Where you can admire all the pokemon you’ve collected so far)
-No Constructor
-
-Sets an empty list as global variable
-
+Default constructor
+-inits new array for holding pokemon
+-count variable = 0 for counting number of pokemon
 Adder method, pokemon object parameter,void return: Adds pokemon to a Storage of pokemon objects
 
-Remove method, index chosen parameter, void return: removes pokemon from list due to market sell
+Sell method, double return: removes pokemon from list and sells removes pokemon from list
 
 Getter method, no parameter, list return: Returns a neat list of all pokemon
 
@@ -117,16 +115,18 @@ Getter method, no parameter, returns double of money left: Gets bank informatrio
 
 
 Main.java
+-Init important objects like pokedex and bank
 -Introduce user to the game
 -Access to a menu of 1. Draw cards 2. Change draw amount 3. Look at pokedex 4. Look at bank 5. Sell pokemon 6. Leave
 
 While userinput == 1, use pokemon.java to draw a random pokemon card
+Checks if user has enough money with the bank
 -add pokemon to pokedex
 -Withdraw money from bank
 -Go back to menu
 
-USer input = 2
-Get a user input to change number of rolls per draw.
+User input = 2
+Get user input to change cards per roll. There will be a variable for user input 1 for this in main.
 
 User input = 3
 -For loop going through the list of pokemon with it’s attributes, values, and cost
@@ -139,7 +139,9 @@ User Input = 5
 -Just sell everything using pokedex and pokemon costs
 -Add money to bank
 
-Whole program is a while loop of, while != 5, run program
+If input is 6, then the program ends.
+
+Whole program is a while loop of, while != 6, run program
 
 
 
